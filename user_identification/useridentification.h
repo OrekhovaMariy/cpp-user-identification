@@ -12,7 +12,9 @@
 #include "data.h"
 
 QT_BEGIN_NAMESPACE
+
 namespace Ui { class UserIdentification; }
+
 QT_END_NAMESPACE
 
 class UserIdentification : public QMainWindow
@@ -28,11 +30,16 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_pushButton_3_clicked();
+
+    void on_pushButton_4_clicked();
+
 private:
     Ui::UserIdentification *ui;
     Data users_data;
+    bool is_authorized = false;
 
-    void ParseStr (Data* data) {
+    void ParseStr () {
         QFile File("UsersLoginPassword.txt");
         if (File.open(QIODevice::ReadOnly)){
             QTextStream stream(&File);
@@ -42,7 +49,7 @@ private:
 
         QStringList list = file_data.split(' ');
         if(list.size() ==2){
-            data->FillData(list[0], list[1]);
+            users_data.FillData(list[0], list[1]);
         }
         }
     }
@@ -56,6 +63,21 @@ private:
         }
         File.close();
     }
+
+    void ReWriteFile() {
+        QFile File("UsersLoginPassword.txt");
+        QMap<QString, QString> login_pass = users_data.GetUsers();
+        if (File.open(QIODevice::Truncate| QIODevice::ReadWrite)) {
+            QTextStream stream(&File);
+           auto it = login_pass.begin();
+           while (it != login_pass.end()){
+               stream << it.key() << " " << it.value() << "\n";
+               it++;
+           }
+        }
+        File.close();
+    }
+
 };
 
 #endif // USERIDENTIFICATION_H

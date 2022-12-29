@@ -4,6 +4,8 @@
 #include "suggesttoadd.h"
 #include "data.h"
 #include "addnewusers.h"
+#include "removeuser.h"
+#include "showusers.h"
 
 #include <QMessageBox>
 
@@ -12,7 +14,9 @@ UserIdentification::UserIdentification( QWidget *parent)
     , ui(new Ui::UserIdentification)
 {
     ui->setupUi(this);
+    ParseStr();
 }
+
 
 UserIdentification::~UserIdentification()
 {
@@ -24,10 +28,14 @@ void UserIdentification::on_pushButton_clicked()
 {
     QString login = ui->login->text();
     QString pass = ui->password->text();
-ParseStr(&users_data);
+if(login.isEmpty()) {
+QMessageBox::warning(this, "Идентификация пользователя", "Введите логин");
+} else {
      QMap<QString, QString> login_pass = users_data.GetUsers();
     if (login_pass.find(login) != login_pass.end() && pass==login_pass[login]) {
         QMessageBox::information(this, "Идентификация пользователя", "Идентификация прошла успешно");
+        is_authorized = true;
+        users_data.AddNewUser(login, pass);
     } else if (login_pass.find(login) != login_pass.end() && pass!=login_pass[login]){
 QMessageBox::warning(this, "Идентификация пользователя", "Пароль или логин введен неверно");
     } else if (login_pass.find(login) == login_pass.end()){
@@ -42,7 +50,8 @@ if(!log.isEmpty() && !pass.isEmpty()) {
 WriteFile(log, pass);
     }
     }
-// вариант, который можно использовать вместо предыдущего
+}
+// вариант, который можно использовать вместо предыдущего, лучше по данным ИТ безопасности
 // QMessageBox::warning(this, "Идентификация пользователя", "Пароль или логин введен неверно");
 }
 
@@ -57,5 +66,32 @@ void UserIdentification::on_pushButton_2_clicked()
 if(!log.isEmpty() && !pass.isEmpty()) {
 WriteFile(log, pass);
 }
+}
+
+
+void UserIdentification::on_pushButton_3_clicked()
+{
+    if(is_authorized) {
+        setVisible(false);
+RemoveUser remove_user (&users_data);
+remove_user.setModal(true);
+remove_user.exec();
+setVisible(true);
+ReWriteFile();
+    } else {
+        QMessageBox::warning(this, "Идентификация пользователя", "Пожалуйста, произведите вход в систему. Введите логин и пароль.");
+    }
+}
+
+
+void UserIdentification::on_pushButton_4_clicked()
+{
+    if(is_authorized) {
+    ShowUsers table_of_users(&users_data);
+    table_of_users.setModal(true);
+    table_of_users.exec();
+    } else {
+        QMessageBox::warning(this, "Идентификация пользователя", "Пожалуйста, произведите вход в систему. Введите логин и пароль.");
+    }
 }
 

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>SuggestToAdd</string>
+   <string>Подтверждение добавления пользователя</string>
   </property>
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">

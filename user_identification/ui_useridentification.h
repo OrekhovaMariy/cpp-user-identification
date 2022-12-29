@@ -11,7 +11,6 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
@@ -29,21 +28,23 @@ class Ui_UserIdentification
 public:
     QWidget *centralwidget;
     QWidget *widget;
+    QVBoxLayout *verticalLayout_5;
+    QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLineEdit *login;
     QSpacerItem *verticalSpacer;
-    QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QLineEdit *password;
     QSpacerItem *verticalSpacer_2;
     QPushButton *pushButton;
-    QSpacerItem *verticalSpacer_4;
     QSpacerItem *verticalSpacer_3;
     QPushButton *pushButton_2;
+    QSpacerItem *verticalSpacer_4;
+    QPushButton *pushButton_3;
+    QSpacerItem *verticalSpacer_5;
+    QPushButton *pushButton_4;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -51,57 +52,52 @@ public:
     {
         if (UserIdentification->objectName().isEmpty())
             UserIdentification->setObjectName(QString::fromUtf8("UserIdentification"));
-        UserIdentification->resize(293, 266);
+        UserIdentification->resize(294, 359);
+        UserIdentification->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(UserIdentification);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         widget = new QWidget(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(40, 40, 209, 152));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        widget->setGeometry(QRect(40, 40, 213, 264));
+        verticalLayout_5 = new QVBoxLayout(widget);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        verticalLayout_5->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_4 = new QVBoxLayout();
+        verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
+        verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label = new QLabel(widget);
         label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout->addWidget(label);
+        verticalLayout_2->addWidget(label);
 
         login = new QLineEdit(widget);
         login->setObjectName(QString::fromUtf8("login"));
+        login->setAutoFillBackground(true);
+        login->setStyleSheet(QString::fromUtf8(""));
 
-        horizontalLayout->addWidget(login);
+        verticalLayout_2->addWidget(login);
 
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addLayout(horizontalLayout);
+        verticalLayout_2->addItem(verticalSpacer);
 
-        verticalSpacer = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout->addItem(verticalSpacer);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignCenter);
 
-        horizontalLayout_2->addWidget(label_2);
+        verticalLayout_2->addWidget(label_2);
 
         password = new QLineEdit(widget);
         password->setObjectName(QString::fromUtf8("password"));
+        password->setStyleSheet(QString::fromUtf8(""));
 
-        horizontalLayout_2->addWidget(password);
+        verticalLayout_2->addWidget(password);
 
-
-        verticalLayout->addLayout(horizontalLayout_2);
-
-
-        verticalLayout_2->addLayout(verticalLayout);
-
-        verticalSpacer_2 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         verticalLayout_2->addItem(verticalSpacer_2);
 
@@ -110,26 +106,46 @@ public:
 
         verticalLayout_2->addWidget(pushButton);
 
-        verticalSpacer_4 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_2->addItem(verticalSpacer_4);
-
-        verticalSpacer_3 = new QSpacerItem(20, 50, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        verticalLayout_2->addItem(verticalSpacer_3);
-
 
         verticalLayout_3->addLayout(verticalLayout_2);
+
+        verticalSpacer_3 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer_3);
 
         pushButton_2 = new QPushButton(widget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
 
         verticalLayout_3->addWidget(pushButton_2);
 
+        verticalSpacer_4 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_3->addItem(verticalSpacer_4);
+
+
+        verticalLayout_4->addLayout(verticalLayout_3);
+
+        pushButton_3 = new QPushButton(widget);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+
+        verticalLayout_4->addWidget(pushButton_3);
+
+        verticalSpacer_5 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_4->addItem(verticalSpacer_5);
+
+
+        verticalLayout_5->addLayout(verticalLayout_4);
+
+        pushButton_4 = new QPushButton(widget);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+
+        verticalLayout_5->addWidget(pushButton_4);
+
         UserIdentification->setCentralWidget(centralwidget);
         menubar = new QMenuBar(UserIdentification);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 293, 22));
+        menubar->setGeometry(QRect(0, 0, 294, 22));
         UserIdentification->setMenuBar(menubar);
         statusbar = new QStatusBar(UserIdentification);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -142,11 +158,18 @@ public:
 
     void retranslateUi(QMainWindow *UserIdentification)
     {
-        UserIdentification->setWindowTitle(QApplication::translate("UserIdentification", "UserIdentification", nullptr));
+        UserIdentification->setWindowTitle(QApplication::translate("UserIdentification", "\320\222\321\205\320\276\320\264 \320\262 \321\201\320\270\321\201\321\202\320\265\320\274\321\203", nullptr));
         label->setText(QApplication::translate("UserIdentification", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+#ifndef QT_NO_ACCESSIBILITY
+        login->setAccessibleDescription(QString());
+#endif // QT_NO_ACCESSIBILITY
+        login->setText(QString());
         label_2->setText(QApplication::translate("UserIdentification", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
-        pushButton->setText(QApplication::translate("UserIdentification", "\320\237\321\200\320\276\320\262\320\265\321\200\320\270\321\202\321\214", nullptr));
-        pushButton_2->setText(QApplication::translate("UserIdentification", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        password->setText(QString());
+        pushButton->setText(QApplication::translate("UserIdentification", "\320\222\321\205\320\276\320\264", nullptr));
+        pushButton_2->setText(QApplication::translate("UserIdentification", " \320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217...", nullptr));
+        pushButton_3->setText(QApplication::translate("UserIdentification", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
+        pushButton_4->setText(QApplication::translate("UserIdentification", "\320\237\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\265\320\271", nullptr));
     } // retranslateUi
 
 };

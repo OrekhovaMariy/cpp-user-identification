@@ -27,6 +27,6 @@ void SuggestToAdd::on_buttonBox_accepted()
 
 void SuggestToAdd::on_buttonBox_rejected()
 {
-    QApplication::activeModalWidget()->close();
+   QApplication::exit(-1);
 }
 

@@ -11,17 +11,23 @@ CONFIG += c++11
 SOURCES += \
     addnewusers.cpp \
     main.cpp \
+    removeuser.cpp \
+    showusers.cpp \
     suggesttoadd.cpp \
     useridentification.cpp
 
 HEADERS += \
     addnewusers.h \
     data.h \
+    removeuser.h \
+    showusers.h \
     suggesttoadd.h \
     useridentification.h
 
 FORMS += \
     addnewusers.ui \
+    removeuser.ui \
+    showusers.ui \
     suggesttoadd.ui \
     useridentification.ui
 

@@ -15,15 +15,22 @@ public:
     void FillData (const QString l, const QString p) {
         login_pass[l]=p;
     }
-    QMap<QString, QString> GetUsers() const {
+    QMap<QString, QString> GetUsers() {
         return login_pass;
     }
+    /*QMap<QString, QString> GetUsers() const {
+        return login_pass;
+    }*/
     QString GetCurrentPass() const {
         return current_pass;
     }
     QString GetCurrentLogin() const {
         return current_login;
     }
+    void RemoveUser(QString l) {
+        login_pass.remove(l);
+    }
+
 };
 
 

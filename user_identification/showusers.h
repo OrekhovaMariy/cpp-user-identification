@@ -2,6 +2,7 @@
 #define SHOWUSERS_H
 
 #include <QDialog>
+#include <QStandardItemModel>
 #include "data.h"
 
 namespace Ui {
@@ -18,6 +19,7 @@ public:
 
 private:
     Ui::ShowUsers *ui;
+    QStandardItemModel *model;
     Data* users_data;
 };
 

@@ -8,16 +8,27 @@ ShowUsers::ShowUsers(Data* d, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
-
     QMap<QString, QString> login_pass = users_data->GetUsers();
     auto it = login_pass.begin();
-    ui->tableWidget->setRowCount(login_pass.size());
-    for(int i = 0; i < login_pass.size(); i++){
-       ui->tableWidget->setItem(i, 0, new QTableWidgetItem(it.key()));
-       ui->tableWidget->setItem(i, 1, new QTableWidgetItem(it.value()));
-       it++;
-   }
+    model = new QStandardItemModel (login_pass.size(), 2, this);
+
+    ui->tableView->setModel(model);
+    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
+    QModelIndex index;
+    for (int col = 0; col < model->columnCount(); col++) {
+        for(int row = 0; row < model->rowCount(); row++){
+            index = model->index(row, col);
+            if (col == 0) {
+                model->setData(index, it.key());
+            } else if (col ==1){
+                model->setData(index, it.value());
+            }
+        }
+    }
+
+    model->setHeaderData(0, Qt::Horizontal, "Логин пользователя");
+    model->setHeaderData(1, Qt::Horizontal, "Пароль пользователя");
+
 }
 
 ShowUsers::~ShowUsers()

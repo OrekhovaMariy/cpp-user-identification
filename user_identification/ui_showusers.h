@@ -12,38 +12,33 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QTableWidget>
+#include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_ShowUsers
 {
 public:
-    QGridLayout *gridLayout;
-    QTableWidget *tableWidget;
+    QVBoxLayout *verticalLayout;
+    QTableView *tableView;
 
     void setupUi(QDialog *ShowUsers)
     {
         if (ShowUsers->objectName().isEmpty())
             ShowUsers->setObjectName(QString::fromUtf8("ShowUsers"));
         ShowUsers->resize(400, 300);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Ubuntu Condensed"));
+        ShowUsers->setFont(font);
         ShowUsers->setStyleSheet(QString::fromUtf8(""));
-        gridLayout = new QGridLayout(ShowUsers);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        tableWidget = new QTableWidget(ShowUsers);
-        if (tableWidget->columnCount() < 2)
-            tableWidget->setColumnCount(2);
-        QTableWidgetItem *__qtablewidgetitem = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(0, __qtablewidgetitem);
-        QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
-        tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
-        tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setStyleSheet(QString::fromUtf8(""));
-        tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        verticalLayout = new QVBoxLayout(ShowUsers);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        tableView = new QTableView(ShowUsers);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
 
-        gridLayout->addWidget(tableWidget, 0, 0, 1, 1);
+        verticalLayout->addWidget(tableView);
 
 
         retranslateUi(ShowUsers);
@@ -54,10 +49,6 @@ public:
     void retranslateUi(QDialog *ShowUsers)
     {
         ShowUsers->setWindowTitle(QCoreApplication::translate("ShowUsers", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\265\320\271", nullptr));
-        QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QCoreApplication::translate("ShowUsers", "\320\233\320\276\320\263\320\270\320\275", nullptr));
-        QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QCoreApplication::translate("ShowUsers", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
     } // retranslateUi
 
 };

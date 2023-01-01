@@ -10,10 +10,10 @@ ShowUsers::ShowUsers(Data* d, QWidget *parent) :
 
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeMode::Stretch);
 
-   QMap<QString, QString> login_pass = users_data->GetUsers();
-auto it = login_pass.begin();
-ui->tableWidget->setRowCount(login_pass.size());
-   for(int i = 0; i < login_pass.size(); i++){
+    QMap<QString, QString> login_pass = users_data->GetUsers();
+    auto it = login_pass.begin();
+    ui->tableWidget->setRowCount(login_pass.size());
+    for(int i = 0; i < login_pass.size(); i++){
        ui->tableWidget->setItem(i, 0, new QTableWidgetItem(it.key()));
        ui->tableWidget->setItem(i, 1, new QTableWidgetItem(it.value()));
        it++;

@@ -14,13 +14,13 @@
    <string>Список пользователей</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">graund_color: rgb(92, 119, 79)</string>
+   <string notr="true"/>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTableWidget" name="tableWidget">
      <property name="styleSheet">
-      <string notr="true">graund_color: rgb(119, 118, 123)</string>
+      <string notr="true"/>
      </property>
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>

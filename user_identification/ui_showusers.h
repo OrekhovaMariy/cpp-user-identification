@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'showusers.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.12
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -29,7 +29,7 @@ public:
         if (ShowUsers->objectName().isEmpty())
             ShowUsers->setObjectName(QString::fromUtf8("ShowUsers"));
         ShowUsers->resize(400, 300);
-        ShowUsers->setStyleSheet(QString::fromUtf8("graund_color: rgb(92, 119, 79)"));
+        ShowUsers->setStyleSheet(QString::fromUtf8(""));
         gridLayout = new QGridLayout(ShowUsers);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tableWidget = new QTableWidget(ShowUsers);
@@ -40,7 +40,7 @@ public:
         QTableWidgetItem *__qtablewidgetitem1 = new QTableWidgetItem();
         tableWidget->setHorizontalHeaderItem(1, __qtablewidgetitem1);
         tableWidget->setObjectName(QString::fromUtf8("tableWidget"));
-        tableWidget->setStyleSheet(QString::fromUtf8("graund_color: rgb(119, 118, 123)"));
+        tableWidget->setStyleSheet(QString::fromUtf8(""));
         tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
         gridLayout->addWidget(tableWidget, 0, 0, 1, 1);
@@ -53,11 +53,11 @@ public:
 
     void retranslateUi(QDialog *ShowUsers)
     {
-        ShowUsers->setWindowTitle(QApplication::translate("ShowUsers", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\265\320\271", nullptr));
+        ShowUsers->setWindowTitle(QCoreApplication::translate("ShowUsers", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\265\320\271", nullptr));
         QTableWidgetItem *___qtablewidgetitem = tableWidget->horizontalHeaderItem(0);
-        ___qtablewidgetitem->setText(QApplication::translate("ShowUsers", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+        ___qtablewidgetitem->setText(QCoreApplication::translate("ShowUsers", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         QTableWidgetItem *___qtablewidgetitem1 = tableWidget->horizontalHeaderItem(1);
-        ___qtablewidgetitem1->setText(QApplication::translate("ShowUsers", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
+        ___qtablewidgetitem1->setText(QCoreApplication::translate("ShowUsers", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
     } // retranslateUi
 
 };

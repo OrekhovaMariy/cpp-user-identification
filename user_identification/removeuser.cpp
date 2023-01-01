@@ -18,15 +18,15 @@ RemoveUser::~RemoveUser()
 
 void RemoveUser::on_pushButton_clicked()
 {
+    QMap<QString, QString> login_pass = users_data->GetUsers();
     QString login = ui->login->text();
     QString pass = ui->password->text();
-    if (login != users_data->GetCurrentLogin() || pass!=users_data->GetCurrentPass()) {
-        QMessageBox::warning(this, "Удаление пользователя", "Вы можете удалить только свои данные.");
+    if (login_pass.find(login) == login_pass.end() || login_pass[login] != pass) {
+        QMessageBox::warning(this, "Удаление пользователя", "Логин и/или пароль введены неверно.");
     } else {
        users_data->RemoveUser(login);
        QMessageBox::information(this, "Удаление пользователя", "Данные пользователя успешно удалены.");
-   QApplication::exit(-1);
-}
+    }
 }
 
 

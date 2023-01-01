@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addnewusers.ui'
 **
-** Created by: Qt User Interface Compiler version 5.12.12
+** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -44,7 +44,7 @@ public:
         if (AddNewUsers->objectName().isEmpty())
             AddNewUsers->setObjectName(QString::fromUtf8("AddNewUsers"));
         AddNewUsers->resize(400, 300);
-        AddNewUsers->setStyleSheet(QString::fromUtf8("graund_color: rgb(92, 119, 79)"));
+        AddNewUsers->setStyleSheet(QString::fromUtf8(""));
         layoutWidget = new QWidget(AddNewUsers);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(50, 50, 305, 199));
@@ -57,7 +57,7 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setStyleSheet(QString::fromUtf8("graund_color: rgb(119, 118, 123)"));
+        label->setStyleSheet(QString::fromUtf8(""));
         label->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(label);
@@ -70,7 +70,7 @@ public:
 
         label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setStyleSheet(QString::fromUtf8("graund_color: rgb(119, 118, 123)"));
+        label_2->setStyleSheet(QString::fromUtf8(""));
         label_2->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(label_2);
@@ -83,7 +83,7 @@ public:
 
         label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setStyleSheet(QString::fromUtf8("graund_color: rgb(119, 118, 123)"));
+        label_3->setStyleSheet(QString::fromUtf8(""));
         label_3->setAlignment(Qt::AlignCenter);
 
         verticalLayout->addWidget(label_3);
@@ -122,14 +122,14 @@ public:
 
     void retranslateUi(QDialog *AddNewUsers)
     {
-        AddNewUsers->setWindowTitle(QApplication::translate("AddNewUsers", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
-        label->setText(QApplication::translate("AddNewUsers", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+        AddNewUsers->setWindowTitle(QCoreApplication::translate("AddNewUsers", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
+        label->setText(QCoreApplication::translate("AddNewUsers", "\320\233\320\276\320\263\320\270\320\275", nullptr));
         add_login->setText(QString());
-        label_2->setText(QApplication::translate("AddNewUsers", "\320\243\321\201\321\202\320\260\320\275\320\276\320\262\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_2->setText(QCoreApplication::translate("AddNewUsers", "\320\243\321\201\321\202\320\260\320\275\320\276\320\262\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
         pass_for_add->setText(QString());
-        label_3->setText(QApplication::translate("AddNewUsers", "\320\237\320\276\320\262\321\202\320\276\321\200\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
+        label_3->setText(QCoreApplication::translate("AddNewUsers", "\320\237\320\276\320\262\321\202\320\276\321\200\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
         pass_for_add_confirm->setText(QString());
-        add_new_user->setText(QApplication::translate("AddNewUsers", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        add_new_user->setText(QCoreApplication::translate("AddNewUsers", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

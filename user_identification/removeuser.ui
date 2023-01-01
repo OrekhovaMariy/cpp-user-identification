@@ -14,9 +14,9 @@
    <string>Удаление пользователя</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">graund_color: rgb(92, 119, 79)</string>
+   <string notr="true"/>
   </property>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -33,7 +33,7 @@
         <item>
          <widget class="QLabel" name="label">
           <property name="styleSheet">
-           <string notr="true">graund_color: rgb(119, 118, 123)</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Логин</string>
@@ -60,7 +60,7 @@
         <item>
          <widget class="QLabel" name="label_2">
           <property name="styleSheet">
-           <string notr="true">graund_color: rgb(119, 118, 123)</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string>Пароль</string>

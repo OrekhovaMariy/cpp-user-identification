@@ -26,6 +26,7 @@ public:
     ~UserIdentification();
 
 private slots:
+
     void on_pushButton_clicked();
 
     void on_pushButton_2_clicked();
@@ -46,14 +47,13 @@ private:
             while (stream.atEnd() == false){
                  QString file_data;
                  file_data = stream.readLine();
-
-        QStringList list = file_data.split(' ');
-        if(list.size() ==2){
-            users_data.FillData(list[0], list[1]);
-        }
+                 QStringList list = file_data.split(' ');
+                 if(list.size() ==2){
+                 users_data.FillData(list[0], list[1]);
+                 }
+            }
         }
     }
-        }
 
     void WriteFile(QString log, QString pass) {
         QFile File("UsersLoginPassword.txt");
@@ -69,11 +69,11 @@ private:
         QMap<QString, QString> login_pass = users_data.GetUsers();
         if (File.open(QIODevice::Truncate| QIODevice::ReadWrite)) {
             QTextStream stream(&File);
-           auto it = login_pass.begin();
-           while (it != login_pass.end()){
+            auto it = login_pass.begin();
+            while (it != login_pass.end()){
                stream << it.key() << " " << it.value() << "\n";
                it++;
-           }
+            }
         }
         File.close();
     }

@@ -38,6 +38,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QSpacerItem *verticalSpacer;
     QPushButton *add_new_user;
+    QLabel *label_connection;
 
     void setupUi(QDialog *AddNewUsers)
     {
@@ -78,6 +79,7 @@ public:
         pass_for_add = new QLineEdit(layoutWidget);
         pass_for_add->setObjectName(QString::fromUtf8("pass_for_add"));
         pass_for_add->setStyleSheet(QString::fromUtf8(""));
+        pass_for_add->setEchoMode(QLineEdit::Password);
 
         verticalLayout->addWidget(pass_for_add);
 
@@ -91,6 +93,7 @@ public:
         pass_for_add_confirm = new QLineEdit(layoutWidget);
         pass_for_add_confirm->setObjectName(QString::fromUtf8("pass_for_add_confirm"));
         pass_for_add_confirm->setStyleSheet(QString::fromUtf8(""));
+        pass_for_add_confirm->setEchoMode(QLineEdit::Password);
 
         verticalLayout->addWidget(pass_for_add_confirm);
 
@@ -114,6 +117,9 @@ public:
 
         verticalLayout_3->addWidget(add_new_user);
 
+        label_connection = new QLabel(AddNewUsers);
+        label_connection->setObjectName(QString::fromUtf8("label_connection"));
+        label_connection->setGeometry(QRect(10, 280, 371, 21));
 
         retranslateUi(AddNewUsers);
 
@@ -130,6 +136,7 @@ public:
         label_3->setText(QCoreApplication::translate("AddNewUsers", "\320\237\320\276\320\262\321\202\320\276\321\200\320\270\321\202\321\214 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
         pass_for_add_confirm->setText(QString());
         add_new_user->setText(QCoreApplication::translate("AddNewUsers", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        label_connection->setText(QCoreApplication::translate("AddNewUsers", "TextLabel", nullptr));
     } // retranslateUi
 
 };

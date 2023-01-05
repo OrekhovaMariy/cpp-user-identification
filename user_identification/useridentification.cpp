@@ -1,8 +1,6 @@
 #include "useridentification.h"
 #include "ui_useridentification.h"
 
-#include "suggesttoadd.h"
-#include "data.h"
 #include "addnewusers.h"
 #include "removeuser.h"
 #include "showusers.h"
@@ -14,7 +12,12 @@ UserIdentification::UserIdentification( QWidget *parent)
     , ui(new Ui::UserIdentification)
 {
     ui->setupUi(this);
-    ParseStr();
+
+    if (!connectOpen()){
+        ui->statusbar->showMessage("База данных не доступна!");
+    } else {
+        ui->statusbar->showMessage("Соединение с базой данных установлено.");
+    }
 }
 
 
@@ -23,71 +26,87 @@ UserIdentification::~UserIdentification()
     delete ui;
 }
 
+void UserIdentification::connectClose()
+{
+    log_pass.close();
+    log_pass.removeDatabase(QSqlDatabase::defaultConnection);
+}
+
+bool UserIdentification::connectOpen()
+{
+    log_pass = QSqlDatabase::addDatabase("QSQLITE");
+    //путь до sql-таблицы. В моем случае она располагалась на локальном диске
+    log_pass.setDatabaseName("/home/mary/DatabaseLogin.db");
+
+    if (!log_pass.open() || log_pass.databaseName().isEmpty()){
+        qDebug()<<("База данных не доступна!");
+        return false;
+    } else {
+        qDebug()<<("Соединение с базой данных установлено.");
+        return true;
+    }
+}
+
+// Вход в систему
 void UserIdentification::on_pushButton_clicked()
 {
-    QString login = ui->login->text();
+    QString log = ui->login->text();
     QString pass = ui->password->text();
-    if(login.isEmpty() || pass.isEmpty()) {
-        QMessageBox::warning(this, "Идентификация пользователя", "Введите логин и пароль");
+    if(!connectOpen()) {
+        qDebug() << "Ошибка при подключении к базе данных";
+        return;
+    } else if(log.isEmpty() || pass.isEmpty()) {
+        QMessageBox::warning(this, "Идентификация пользователя", "Введите логин и пароль.");
     } else {
-        QMap<QString, QString> login_pass = users_data.GetUsers();
-        if (login_pass.find(login) != login_pass.end() && pass==login_pass[login]) {
-            QMessageBox::information(this, "Идентификация пользователя", "Идентификация прошла успешно");
-            is_authorized = true;
-            users_data.AddCurrentUser(login, pass);
-        } else if (login_pass.find(login) != login_pass.end() && pass!=login_pass[login]){
-            QMessageBox::warning(this, "Идентификация пользователя", "Пароль или логин введен неверно");
-        } else if (login_pass.find(login) == login_pass.end()){
-            // в рамках информационной безопасности данный вариант использовать не желательно, чтобы не распространять
-            // информацию о наличии пользователя с данным логином
-            /*SuggestToAdd win_of_suggest_to_add(&users_data);
-            win_of_suggest_to_add.setModal(true);
-            win_of_suggest_to_add.exec();
-            QString log = users_data.GetCurrentLogin();
-            QString pass = users_data.GetCurrentPass();
-            if(!log.isEmpty() && !pass.isEmpty()) {
-                WriteFile(log, pass);
-            }
-        }
-    }*/
 
-             QMessageBox::warning(this, "Идентификация пользователя", "Пароль или логин введен неверно");
+        connectOpen();
+        QSqlQuery qry;
+        qry.prepare("select * from users where login='"+log+"' and password='"+pass+"'");
+
+        if (qry.exec( ))
+        {
+            int count=0;
+            while (qry.next()){
+                count++;
+            }
+            if (count==1){
+                QMessageBox::information(this, "Идентификация пользователя", "Идентификация прошла успешно");
+                connectClose();
+                is_authorized = true;
+            } else
+            {
+                QMessageBox::warning(this, "Идентификация пользователя", "Пароль или логин введен неверно");
+            }
         }
     }
 }
 
-
+// Добавление пользователя
 void UserIdentification::on_pushButton_2_clicked()
 {
     setVisible(false);
-    AddNewUsers add_new_user(&users_data);
+    AddNewUsers add_new_user;
     add_new_user.setModal(true);
     add_new_user.exec();
-    QString log = users_data.GetCurrentLogin();
-    QString pass = users_data.GetCurrentPass();
-    if(!log.isEmpty() && !pass.isEmpty()) {
-        WriteFile(log, pass);
-    }
 }
 
-
+// Удаление пользователя
 void UserIdentification::on_pushButton_3_clicked()
 {
     setVisible(false);
-    RemoveUser remove_user (&users_data);
+    RemoveUser remove_user;
     remove_user.setModal(true);
     remove_user.exec();
     setVisible(true);
-    ReWriteFile();
     QApplication::exit(-1);
 }
 
-
+// Демонстрация данных пользователей
 void UserIdentification::on_pushButton_4_clicked()
 {
     if(is_authorized) {
         setVisible(false);
-        ShowUsers table_of_users(&users_data);
+        ShowUsers table_of_users;
         table_of_users.setModal(true);
         table_of_users.exec();
         QApplication::exit(-1);

@@ -32,7 +32,8 @@ public:
     QVBoxLayout *verticalLayout_4;
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
-    QLabel *label;
+    QLabel *label_3;
+    QSpacerItem *verticalSpacer_6;
     QLineEdit *login;
     QSpacerItem *verticalSpacer;
     QLabel *label_2;
@@ -52,13 +53,13 @@ public:
     {
         if (UserIdentification->objectName().isEmpty())
             UserIdentification->setObjectName(QString::fromUtf8("UserIdentification"));
-        UserIdentification->resize(294, 359);
+        UserIdentification->resize(326, 379);
         UserIdentification->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(UserIdentification);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
-        layoutWidget->setGeometry(QRect(40, 40, 213, 264));
+        layoutWidget->setGeometry(QRect(60, 30, 213, 271));
         verticalLayout_5 = new QVBoxLayout(layoutWidget);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
         verticalLayout_5->setContentsMargins(0, 0, 0, 0);
@@ -68,11 +69,15 @@ public:
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        label = new QLabel(layoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setAlignment(Qt::AlignCenter);
+        label_3 = new QLabel(layoutWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAlignment(Qt::AlignCenter);
 
-        verticalLayout_2->addWidget(label);
+        verticalLayout_2->addWidget(label_3);
+
+        verticalSpacer_6 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        verticalLayout_2->addItem(verticalSpacer_6);
 
         login = new QLineEdit(layoutWidget);
         login->setObjectName(QString::fromUtf8("login"));
@@ -94,6 +99,7 @@ public:
         password = new QLineEdit(layoutWidget);
         password->setObjectName(QString::fromUtf8("password"));
         password->setStyleSheet(QString::fromUtf8(""));
+        password->setEchoMode(QLineEdit::Password);
 
         verticalLayout_2->addWidget(password);
 
@@ -145,7 +151,7 @@ public:
         UserIdentification->setCentralWidget(centralwidget);
         menubar = new QMenuBar(UserIdentification);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 294, 22));
+        menubar->setGeometry(QRect(0, 0, 326, 22));
         UserIdentification->setMenuBar(menubar);
         statusbar = new QStatusBar(UserIdentification);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
@@ -159,7 +165,7 @@ public:
     void retranslateUi(QMainWindow *UserIdentification)
     {
         UserIdentification->setWindowTitle(QCoreApplication::translate("UserIdentification", "\320\222\321\205\320\276\320\264 \320\262 \321\201\320\270\321\201\321\202\320\265\320\274\321\203", nullptr));
-        label->setText(QCoreApplication::translate("UserIdentification", "\320\233\320\276\320\263\320\270\320\275", nullptr));
+        label_3->setText(QCoreApplication::translate("UserIdentification", "\320\233\320\276\320\263\320\270\320\275", nullptr));
 #if QT_CONFIG(accessibility)
         login->setAccessibleDescription(QString());
 #endif // QT_CONFIG(accessibility)

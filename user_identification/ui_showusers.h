@@ -13,15 +13,15 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QTableView>
-#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_ShowUsers
 {
 public:
-    QVBoxLayout *verticalLayout;
+    QLabel *label_connection;
     QTableView *tableView;
 
     void setupUi(QDialog *ShowUsers)
@@ -33,13 +33,12 @@ public:
         font.setFamily(QString::fromUtf8("Ubuntu Condensed"));
         ShowUsers->setFont(font);
         ShowUsers->setStyleSheet(QString::fromUtf8(""));
-        verticalLayout = new QVBoxLayout(ShowUsers);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        label_connection = new QLabel(ShowUsers);
+        label_connection->setObjectName(QString::fromUtf8("label_connection"));
+        label_connection->setGeometry(QRect(10, 280, 381, 17));
         tableView = new QTableView(ShowUsers);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-
-        verticalLayout->addWidget(tableView);
-
+        tableView->setGeometry(QRect(10, 10, 381, 251));
 
         retranslateUi(ShowUsers);
 
@@ -49,6 +48,7 @@ public:
     void retranslateUi(QDialog *ShowUsers)
     {
         ShowUsers->setWindowTitle(QCoreApplication::translate("ShowUsers", "\320\241\320\277\320\270\321\201\320\276\320\272 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\265\320\271", nullptr));
+        label_connection->setText(QCoreApplication::translate("ShowUsers", "TextLabel", nullptr));
     } // retranslateUi
 
 };

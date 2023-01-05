@@ -33,12 +33,13 @@ public:
     QLabel *label_2;
     QLineEdit *password;
     QPushButton *pushButton;
+    QLabel *label_connection;
 
     void setupUi(QDialog *RemoveUser)
     {
         if (RemoveUser->objectName().isEmpty())
             RemoveUser->setObjectName(QString::fromUtf8("RemoveUser"));
-        RemoveUser->resize(253, 207);
+        RemoveUser->resize(267, 207);
         RemoveUser->setStyleSheet(QString::fromUtf8(""));
         layoutWidget = new QWidget(RemoveUser);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
@@ -78,6 +79,7 @@ public:
         password = new QLineEdit(layoutWidget);
         password->setObjectName(QString::fromUtf8("password"));
         password->setStyleSheet(QString::fromUtf8(""));
+        password->setEchoMode(QLineEdit::Password);
 
         verticalLayout_2->addWidget(password);
 
@@ -92,6 +94,9 @@ public:
 
         verticalLayout_4->addWidget(pushButton);
 
+        label_connection = new QLabel(RemoveUser);
+        label_connection->setObjectName(QString::fromUtf8("label_connection"));
+        label_connection->setGeometry(QRect(10, 190, 251, 17));
 
         retranslateUi(RemoveUser);
 
@@ -106,6 +111,7 @@ public:
         label_2->setText(QCoreApplication::translate("RemoveUser", "\320\237\320\260\321\200\320\276\320\273\321\214", nullptr));
         password->setText(QString());
         pushButton->setText(QCoreApplication::translate("RemoveUser", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214", nullptr));
+        label_connection->setText(QCoreApplication::translate("RemoveUser", "TextLabel", nullptr));
     } // retranslateUi
 
 };

@@ -1,8 +1,10 @@
 #ifndef ADDNEWUSERS_H
 #define ADDNEWUSERS_H
 
+#include "useridentification.h"
 #include <QDialog>
-#include "data.h"
+#include <QtSql>
+#include <QtDebug>
 
 namespace Ui {
 class AddNewUsers;
@@ -13,7 +15,7 @@ class AddNewUsers : public QDialog
     Q_OBJECT
 
 public:
-    explicit AddNewUsers(Data* d, QWidget *parent = nullptr);
+    explicit AddNewUsers(QWidget *parent = nullptr);
     ~AddNewUsers();
 
 private slots:
@@ -21,7 +23,6 @@ private slots:
 
 private:
     Ui::AddNewUsers *ui;
-    Data* users_data;
 };
 
 #endif // ADDNEWUSERS_H

@@ -1,4 +1,5 @@
-QT       += core gui
+QT       += core gui sql
+QMAKE_LFLAGS += -no-pie
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -13,22 +14,18 @@ SOURCES += \
     main.cpp \
     removeuser.cpp \
     showusers.cpp \
-    suggesttoadd.cpp \
     useridentification.cpp
 
 HEADERS += \
     addnewusers.h \
-    data.h \
     removeuser.h \
     showusers.h \
-    suggesttoadd.h \
     useridentification.h
 
 FORMS += \
     addnewusers.ui \
     removeuser.ui \
     showusers.ui \
-    suggesttoadd.ui \
     useridentification.ui
 
 # Default rules for deployment.

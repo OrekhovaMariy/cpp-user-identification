@@ -3,12 +3,18 @@
 #include "removeuser.h"
 #include "ui_removeuser.h"
 
-RemoveUser::RemoveUser(Data* d, QWidget *parent) :
+RemoveUser::RemoveUser(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::RemoveUser),
-    users_data(d)
+    ui(new Ui::RemoveUser)
 {
     ui->setupUi(this);
+
+    UserIdentification conn;
+    if (!conn.connectOpen()){
+        ui->label_connection->setText("База данных не доступна!");
+    } else {
+        ui->label_connection->setText("Соединение с базой данных установлено.");
+    }
 }
 
 RemoveUser::~RemoveUser()
@@ -18,15 +24,42 @@ RemoveUser::~RemoveUser()
 
 void RemoveUser::on_pushButton_clicked()
 {
-    QMap<QString, QString> login_pass = users_data->GetUsers();
-    QString login = ui->login->text();
+    UserIdentification conn;
+    QString log = ui->login->text();
     QString pass = ui->password->text();
-    if (login_pass.find(login) == login_pass.end() || login_pass[login] != pass) {
-        QMessageBox::warning(this, "Удаление пользователя", "Логин и/или пароль введены неверно.");
-    } else {
-       users_data->RemoveUser(login);
-       QMessageBox::information(this, "Удаление пользователя", "Данные пользователя успешно удалены.");
+    if(!conn.connectOpen()) {
+        qDebug() << "Ошибка при подключении к базе данных";
+        return;
     }
-}
+        conn.connectOpen();
+        QSqlQuery qry;
+
+        qry.prepare("select * from users where login='"+log+"' and password='"+pass+"'");
+
+        if (qry.exec())
+        {
+            int count=0;
+            while (qry.next()){
+                count++;
+            }
+            if (count < 1){
+               QMessageBox::warning(this, "Удаление пользователя", "Логин и/или пароль введены неверно.");
+
+               conn.connectClose();
+               QApplication::exit(-1);
+            } else {
+                QSqlQuery qury;
+
+                qury.prepare("delete from users where login='"+log+"'");
+                if (qury.exec()) {
+                    QMessageBox::information(this, "Удаление пользователя", "Данные пользователя успешно удалены.");
+                    conn.connectClose();
+                    QApplication::exit(-1);
+                }
+            }
+        }
+    }
+
+
 
 

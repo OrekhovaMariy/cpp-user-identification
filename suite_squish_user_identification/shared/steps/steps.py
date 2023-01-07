@@ -184,3 +184,14 @@ def step(context):
     type(waitForObject(names.removeUser_password_QLineEdit), "<NumPad1>")
     clickButton(waitForObject(names.removeUser_pushButton_QPushButton))
     clickButton(waitForObject(names.o_OK_QPushButton_3))
+
+@Given("view users by another login and password")
+def step(context):
+    type(waitForObject(names.userIdentification_login_QLineEdit), "maxa1111")
+    type(waitForObject(names.userIdentification_login_QLineEdit), "<Tab>")
+    type(waitForObject(names.userIdentification_password_QLineEdit), "m11111111111")
+    clickButton(waitForObject(names.userIdentification_pushButton_QPushButton))
+    clickButton(waitForObject(names.o_OK_QPushButton))
+    clickButton(waitForObject(names.userIdentification_pushButton_4_QPushButton))
+    test.compare(waitForObjectExists(names.tableView_4_0_QModelIndex).row, 4)
+    sendEvent("QCloseEvent", waitForObject(names.showUsers_ShowUsers))

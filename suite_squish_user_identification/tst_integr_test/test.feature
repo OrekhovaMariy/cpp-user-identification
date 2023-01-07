@@ -12,5 +12,7 @@ Feature: Checking of input, logging in, viewing and removing users
          Then logging in
           And view users
           And delete users
+          Given open the application
+          And view users by another login and password
 
 

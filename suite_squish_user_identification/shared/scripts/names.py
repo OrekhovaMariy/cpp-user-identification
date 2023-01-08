@@ -44,3 +44,6 @@ tableView_1_0_QModelIndex = {"column": 0, "container": showUsers_tableView_QTabl
 tableView_0_1_QModelIndex = {"column": 1, "container": showUsers_tableView_QTableView, "row": 0, "type": "QModelIndex"}
 tableView_0_0_QModelIndex = {"column": 0, "container": showUsers_tableView_QTableView, "row": 0, "type": "QModelIndex"}
 o7_HeaderViewItem = {"container": tableView_QHeaderView, "text": 7, "type": "HeaderViewItem", "visible": True}
+o_qt_msgbox_label_QLabel = {"name": "qt_msgbox_label", "type": "QLabel", "visible": 1, "window": o_QMessageBox_2}
+o_qt_msgbox_label_QLabel_2 = {"name": "qt_msgbox_label", "type": "QLabel", "visible": 1, "window": o_QMessageBox}
+o_qt_msgbox_label_QLabel_3 = {"name": "qt_msgbox_label", "type": "QLabel", "visible": 1, "window": o_QMessageBox_3}

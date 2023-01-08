@@ -46,6 +46,7 @@ def main():
         type(waitForObject(names.userIdentification_login_QLineEdit), "<Tab>")
         type(waitForObject(names.userIdentification_password_QLineEdit), password)
         clickButton(waitForObject(names.userIdentification_pushButton_QPushButton))
+        test.compare(str(waitForObjectExists(names.o_qt_msgbox_label_QLabel_2).text), "Идентификация прошла успешно")
         clickButton(waitForObject(names.o_OK_QPushButton))
         doubleClick(waitForObject(names.userIdentification_login_QLineEdit), 102, 13, Qt.NoModifier, Qt.LeftButton)
         type(waitForObject(names.userIdentification_login_QLineEdit), "<Del>")

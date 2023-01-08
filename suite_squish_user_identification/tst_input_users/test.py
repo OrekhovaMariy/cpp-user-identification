@@ -32,6 +32,7 @@ def main():
         type(waitForObject(names.addNewUsers_pass_for_add_QLineEdit), "<Tab>")
         type(waitForObject(names.addNewUsers_pass_for_add_confirm_QLineEdit), password)
         clickButton(waitForObject(names.addNewUsers_add_new_user_QPushButton))
+        test.compare(str(waitForObjectExists(names.o_qt_msgbox_label_QLabel).text), "Пользователь успешно добавлен.")
         clickButton(waitForObject(names.o_OK_QPushButton_2))
         
     #смотрим размер таблицы после внесения данных. Информация выводится в Runner/Server Log

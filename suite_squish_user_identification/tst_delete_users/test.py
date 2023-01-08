@@ -46,6 +46,7 @@ def main():
         type(waitForObject(names.removeUser_login_QLineEdit), "<Tab>")
         type(waitForObject(names.removeUser_password_QLineEdit), password)
         clickButton(waitForObject(names.removeUser_pushButton_QPushButton))
+        test.compare(str(waitForObjectExists(names.o_qt_msgbox_label_QLabel_3).text), "Данные пользователя успешно удалены.")
         clickButton(waitForObject(names.o_OK_QPushButton_3))
        
     #смотрим размер таблицы после внесения изменений. Информация выводится в Runner/Server Log

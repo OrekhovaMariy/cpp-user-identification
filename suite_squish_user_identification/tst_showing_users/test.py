@@ -21,17 +21,21 @@ def input_data_to_database(user_login, user_password):
     cur.execute('INSERT INTO users VALUES(?, ?)', (user_login, user_password))
     base.commit()
 
-
 def main():
     #смотрим размер таблицы до внесения данных. Информация выводится в Runner/Server Log
-    s = len(output_data_from_database())
-    print(s)
+    print(len(output_data_from_database()))
     
-    #Если количество данных в таблице меньше, чем необходимо для проведения теста, то вносим недостающие данные
-    while s < 7:
-        input_data_to_database('mary7777', '111111111111')
-        s = s + 1
+    #вносим в базу данные напрямую.
+    for record in testData.dataset("adding_data.tsv"):
+        login = testData.field(record, "login")
+        password = testData.field(record, "password")
     
+        input_data_to_database(login, password)
+    
+    #смотрим размер таблицы после внесения данных. Информация выводится в Runner/Server Log
+    print(len(output_data_from_database()))
+    new_size = len(output_data_from_database())
+        
     startApplication("user_identification")
     mouseClick(waitForObject(names.userIdentification_login_QLineEdit), 38, 13, Qt.NoModifier, Qt.LeftButton)
     type(waitForObject(names.userIdentification_login_QLineEdit), "maxa1111")
@@ -41,12 +45,18 @@ def main():
     test.compare(str(waitForObjectExists(names.o_qt_msgbox_label_QLabel_2).text), "Идентификация прошла успешно")
     clickButton(waitForObject(names.o_OK_QPushButton))
     clickButton(waitForObject(names.userIdentification_pushButton_4_QPushButton))
-    mouseClick(waitForObject(names.o7_HeaderViewItem), 6, 12, Qt.NoModifier, Qt.LeftButton)
-    test.compare(waitForObjectExists(names.o7_HeaderViewItem).text, "7")
+    
+    #сравниваем количество элементов в отображаемой в приложении таблице с количеством пользователей в базе
+    header = waitForObject(names.tableView_QHeaderView)
+    test.compare(header.count(), new_size)
+    
     sendEvent("QCloseEvent", waitForObject(names.showUsers_ShowUsers))
     
-    #приводим базу к дефолтному состоянию
-    delete_data_from_database('mary7777')
+    #приводим database к дефолтному состоянию.
+    for record in testData.dataset("adding_data.tsv"):
+        login = testData.field(record, "login")
+    
+        delete_data_from_database(login)
         
-    #смотрим размер таблицы после привидения её к дефолтному состоянию. Информация выводится в Runner/Server Log
-    print(len(output_data_from_database()))    
+    #смотрим размер таблицы после приведения её к дефолтному состоянию. Информация выводится в Runner/Server Log
+    print(len(output_data_from_database()))

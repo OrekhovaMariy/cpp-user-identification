@@ -24,6 +24,8 @@ def input_data_to_database(user_login, user_password):
 def main():
     #смотрим размер таблицы до внесения данных. Информация выводится в Runner/Server Log
     print(len(output_data_from_database()))
+    #создаем массив, который будет хранить данные, взятые из базы напрямую
+    list_users = output_data_from_database()
     
     #вносим в базу данные напрямую.
     for record in testData.dataset("adding_data.tsv"):
@@ -31,6 +33,8 @@ def main():
         password = testData.field(record, "password")
     
         input_data_to_database(login, password)
+        #добавим в массив данные, которые добавляем в базу
+        list_users.append((login, password))
     
     #смотрим размер таблицы после внесения данных. Информация выводится в Runner/Server Log
     print(len(output_data_from_database()))
@@ -49,6 +53,17 @@ def main():
     #сравниваем количество элементов в отображаемой в приложении таблице с количеством пользователей в базе
     header = waitForObject(names.tableView_QHeaderView)
     test.compare(header.count(), new_size)
+    
+    #сравниваем каждый элемент, который отображается в таблице с данными, которые мы взяли из базы напрямую
+    table = waitForObject(names.showUsers_tableView_QTableView)
+    model = table.model()
+    columnCount = model.columnCount()
+    rowCount = model.rowCount()
+    
+    for col in range(columnCount):
+        for row in range(rowCount):
+            itemText = str(model.data(model.index(row, col), Qt.DisplayRole).toString())
+            test.verify(itemText == list_users[row][col])
     
     sendEvent("QCloseEvent", waitForObject(names.showUsers_ShowUsers))
     
